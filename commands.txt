@@ -1,0 +1,6 @@
+python .\Scripts\django-admin.py startproject project_name
+env\Scripts\activate
+
+python manage.py runserver
+
+python manage.py collectstatic
