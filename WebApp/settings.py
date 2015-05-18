@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'WebApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'django_db',
+	'ENGINE': 'django.db.backends.mysql',
+	'USER': 'root',
+	'PASSWORD': 'root',
+	'OPTIONS': {
+	  'autocommit': True,
+	},
     }
 }
 
@@ -102,7 +107,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static','static_root')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static', 'static_dirs'),
