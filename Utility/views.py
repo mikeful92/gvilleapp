@@ -45,7 +45,7 @@ def results(request):
             obj = get_list_or_404(Consumption, ServiceAddress=address)
             context = {"form": form, "obj": obj}
         except:
-            context = {"form": form, "error": "No match was found for " + address}    
+            context = {"form": form, "address": address}
     template = "results.html"
     return render(request, template, context)
 
