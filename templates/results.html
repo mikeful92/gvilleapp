@@ -29,25 +29,29 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="text-center">Electricity for 2014</h2>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Month</th>
-                            <th>Kilowatts/Hour</th>
-                            <th>Estimated Bill<th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in obj %}
-                        <tr>
-                            <td>{{ item.Month }}</td>
-                            <td>{{ item.KWH_Consumption }}</td>
-                            <td>${{ item.Charge }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                {% if obj %}
+                    <h2 class="text-center">Electricity for 2014</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Kilowatts/Hour</th>
+                                <th>Estimated Bill<th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in obj %}
+                            <tr>
+                                <td>{{ item.Month }}</td>
+                                <td>{{ item.KWH_Consumption }}</td>
+                                <td>${{ item.Charge }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% elif error %}
+                <p>{{ error }}</p>
+                {% endif %}
             </div>
         </div>
     </div>

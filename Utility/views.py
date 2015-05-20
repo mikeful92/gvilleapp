@@ -41,8 +41,11 @@ def results(request):
     if form.is_valid():
         address = form.cleaned_data['address']
         address = cleanData(address)
-        obj = get_list_or_404(Consumption, ServiceAddress=address)
-    context = {"form": form, "obj": obj}
+        try:
+            obj = get_list_or_404(Consumption, ServiceAddress=address)
+            context = {"form": form, "obj": obj}
+        except:
+            context = {"form": form, "error": "No match was found for " + address}    
     template = "results.html"
     return render(request, template, context)
 
