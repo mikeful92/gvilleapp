@@ -7,8 +7,4 @@ python manage.py collectstatic
 
 mysql -u root -p -e "CREATE DATABASE django_db;"
 
-LOAD DATA INFILE '/home/vagrant/vagrant/myproject/src/result.csv' 
-INTO TABLE tableName
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-(col1, col2, col3, col4);
+LOAD DATA INFILE '/tmp/result_with_price.csv' INTO TABLE Utility_consumption FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (ServiceAddress, Month, Year, KWH_Consumption, Charge);
