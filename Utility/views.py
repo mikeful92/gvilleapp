@@ -3,7 +3,7 @@ from django.shortcuts import render, get_list_or_404, HttpResponseRedirect
 # Create your views here.
 
 from .forms import AddressForm
-from .models import Consumption
+from .models import Electric, Water
 
 
 def cleanData(address):
@@ -42,8 +42,9 @@ def results(request):
         address = form.cleaned_data['address']
         address = cleanData(address)
         try:
-            obj = get_list_or_404(Consumption, ServiceAddress=address)
-            context = {"form": form, "obj": obj}
+            electricObj = get_list_or_404(Electric, ServiceAddress=address)
+            waterObj = get_list_or_404(Water, ServiceAddress=address)
+            context = {"form": form, "electricObj": electricObj, "waterObj": waterObj}
         except:
             context = {"form": form, "address": address}
     template = "results.html"

@@ -7,4 +7,18 @@ python manage.py collectstatic
 
 mysql -u root -p -e "CREATE DATABASE django_db;"
 
-LOAD DATA INFILE '/tmp/result_with_price.csv' INTO TABLE Utility_consumption FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (ServiceAddress, Month, Year, KWH_Consumption, Charge);
+LOAD DATA INFILE '/tmp/result_with_price.csv' INTO TABLE Utility_electric FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (ServiceAddress, Month, Year, KWH_Consumption, Charge);
+
+LOAD DATA INFILE '/tmp/Water_fixed.csv' INTO TABLE Utility_water FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (ServiceAddress, Month, Year, Water_Consumption, Charge);
+
+
+cp webapp /etc/nginx/sites-available/
+sudo ln -s ../sites-available/webapp
+
+/vagrant/myproject/src
+
+vim /etc/apparmor.d/usr.sbin.mysqld
+    /tmp/ r,
+    /tmp/* rw,
+/etc/init.d/apparmor reload
+service mysql restart
