@@ -13,3 +13,7 @@ header{
 .navbar-inverse .navbar-brand {
   color: white;
 }
+
+.form-section{
+    margin-bottom: 30px;
+}
